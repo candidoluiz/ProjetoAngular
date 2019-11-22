@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
+import { ClienteDetalheComponent } from './cliente-detalhe/cliente-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { routing } from './app.routing';
     ClienteComponent,
     VendedorComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ClienteDetalheComponent
   ],
   imports: [
     BrowserModule,

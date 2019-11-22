@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div [ngbCollapse]="isCollapse" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle>
+          Cadastro
+        </a>
+        <div  class="dropdown-menu" ngbDropdownMenu>
+          <a routerLink ="/cliente" class="dropdown-item">Cliente</a>
+          <div class="dropdown-divider"></div>
+          <a routerLink ="/vendedor" class="dropdown-item" >Vendedor</a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink] ="['cliente',idCurso.value]" class="dropdown-item" >ClienteDetalhe</a>
+        </div>
+      </li>
+
+      <li routerLinkActive="active"  class="nav-item dropdown" ngbDropdown>
+        <a  class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle>
+          Relatório
+        </a>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <a routerLink = "/cliente" class="dropdown-item" >Cliente</a>
+          <div class="dropdown-divider"></div>
+          <a routerLink="/vendedor" class="dropdown-item" >Vendedor</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gerencial</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <p>Entre com o id</p>
+  <input #idCurso>
+  <router-outlet></router-outlet>
+
+</div>
+
+
