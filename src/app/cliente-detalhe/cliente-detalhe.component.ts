@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+//import { ClienteService } from "../service/cliente.service";
 
 @Component({
   selector: 'app-cliente-detalhe',
@@ -9,8 +10,9 @@ import { Subscription } from 'rxjs';
 })
 export class ClienteDetalheComponent implements OnInit {
 
-  id: string
+  id: string;
   inscricao: Subscription;
+  //clientes: ClienteDto[];
 
   constructor(private rota: ActivatedRoute) {}
 
@@ -20,6 +22,10 @@ export class ClienteDetalheComponent implements OnInit {
         this.id = params['id'];
       }
     );
+
+    /*this.servico.getCliente().subscribe(ret => {
+      this.clientes = ret;
+    });*/
   }
 
   ngOnDestroy() {

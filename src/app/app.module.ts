@@ -5,21 +5,23 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { VendedorComponent } from './vendedor/vendedor.component';
+//import { VendedorComponent } from './vendedor/vendedor.component';
 import { LoginComponent } from './login/login.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { ClienteDetalheComponent } from './cliente-detalhe/cliente-detalhe.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClienteComponent,
-    VendedorComponent,
+    //VendedorComponent,
     LoginComponent,
     HomeComponent,
-    ClienteDetalheComponent
+    ClienteDetalheComponent,
+    VendedorComponent
   ],
   imports: [
     BrowserModule,
