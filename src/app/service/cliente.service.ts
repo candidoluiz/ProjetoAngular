@@ -13,10 +13,13 @@ const apiUrl = 'http://localhost:5000/api/produto';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ClienteService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(
+    //private http: HttpClient
+    ) { }
+/*
   getClientes(): Observable<ClienteDto[]> {
     return this.http.get<ClienteDto[]>(apiUrl)
     .pipe(
@@ -61,5 +64,12 @@ export class ClienteService {
       tap(_ => console.log(`remove o cliente com id=${id}`)),
       catchError(this.handleError<ClienteDto>('deleteCliente'))
     );
+  }
+*/
+  getClienteTeste() {
+    return[
+      {clienteId: 1, nome: 'Luiz'},
+      {clienteId: 2, nome: 'Fernando'}
+    ];
   }
 }

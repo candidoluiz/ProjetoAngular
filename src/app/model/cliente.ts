@@ -1,9 +1,9 @@
-import { VendedorDto } from "./vendedor";
+import { VendedorDto } from './vendedor';
 
 export class ClienteDto{
 
   clienteId: number;
-  cnpj:string;
+  cnpj: string;
   razaoSocial: string;
   lat: string;
   longi: string;
