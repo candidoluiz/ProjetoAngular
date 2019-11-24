@@ -13,6 +13,7 @@ import { ClienteService } from './service/cliente.service';
 import { VendedorService } from './service/vendedor.service';
 import { VendedorModule } from './vendedor/vendedor.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { LoginService } from './service/login.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ClienteModule } from './cliente/cliente.module';
     VendedorModule,
     routing
   ],
-  providers: [ClienteService, VendedorService],
+  providers: [ClienteService, VendedorService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
