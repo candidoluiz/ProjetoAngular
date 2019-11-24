@@ -12,11 +12,11 @@
           <div class="dropdown-divider"></div>
           <a routerLink ="/vendedor" class="dropdown-item" >Vendedor</a>
           <div class="dropdown-divider"></div>
-          <a [routerLink] ="['cliente',idCurso.value]" class="dropdown-item" >ClienteDetalhe</a>
+
         </div>
       </li>
 
-      <li routerLinkActive="active"  class="nav-item dropdown" ngbDropdown>
+      <li  class="nav-item dropdown" ngbDropdown>
         <a  class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle>
           Relatório
         </a>
@@ -35,8 +35,6 @@
 </nav>
 
 <div class="container">
-  <p>Entre com o id</p>
-  <input #idCurso>
   <br>
   <router-outlet></router-outlet>
 

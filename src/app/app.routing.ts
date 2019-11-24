@@ -1,3 +1,4 @@
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ const APP_ROUTES: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cliente', component: ClienteComponent},
+  {path: 'cliente/cliente-form', component: ClienteFormComponent},
   {path: 'cliente/:id', component: ClienteDetalheComponent},
   {path: 'vendedor', component: VendedorComponent}
 ];

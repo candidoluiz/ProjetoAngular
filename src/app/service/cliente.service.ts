@@ -8,7 +8,7 @@ import { ClienteDto } from '../model/cliente';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:5000/api/produto';
+const apiUrl = 'http://localhost:8080/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,8 @@ const apiUrl = 'http://localhost:5000/api/produto';
 export class ClienteService {
 
   constructor(
-    //private http: HttpClient
-    ) { }
-/*
+    private http: HttpClient) { }
+
   getClientes(): Observable<ClienteDto[]> {
     return this.http.get<ClienteDto[]>(apiUrl)
     .pipe(
@@ -34,7 +33,7 @@ export class ClienteService {
       return of(result as T);
     };
   }
-
+/*
   getCliente(id: number): Observable<ClienteDto> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<ClienteDto>(url).pipe(

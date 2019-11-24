@@ -1,7 +1,30 @@
-<p>Lista de clientes</p>
+<h1 style="text-align: center;">LISTA DE CLIENTES</h1>
+<br>
 
-<div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let item of cliente" >{{item.nome}}</li>
-  </ul>
-</div>
+<!-- <button type="button" class="btn btn-primary" >Novo</button> -->
+<a routerLink = "/cliente/novo" class="btn btn-primary  active" role="button" aria-pressed="true">Novo</a>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">COD</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Razão Social</th>
+      <th scope="col">Lat</th>
+      <th scope="col">Long</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cliente" >
+      <th scope="row">{{item.clienteId}}</th>
+      <td>{{item.nome}}</td>
+      <td>{{item.cnpj}}</td>
+      <td>{{item.rs}}</td>
+      <td>{{item.lat}}</td>
+      <td>{{item.longi}}</td>
+      <td><button type="button" class="btn btn-success">Editar</button> &nbsp;
+        <button type="button" class="btn btn-danger">Exluir</button></td>
+    </tr>
+  </tbody>
+</table>

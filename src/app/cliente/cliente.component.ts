@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  cliente: any[];
+  cliente: any = [];
 
 
 
@@ -17,7 +17,16 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cliente = this.clienteService.getClienteTeste();
+    //this.cliente = this.clienteService.getClienteTeste();
+    this.carregarClientes();
+  }
+
+  carregarClientes() {
+
+    return this.clienteService.getClientes().subscribe((data: {}) => {
+      this.cliente = data;
+    })
+
   }
 
 }

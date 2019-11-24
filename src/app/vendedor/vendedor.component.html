@@ -1,4 +1,9 @@
-<button type="button" class="btn btn-primary">Novo</button>
+<h1 style="text-align: center;">LISTA DE VENDEDORES</h1>
+<br>
+
+<!-- <button type="button" class="btn btn-primary">Novo</button> -->
+<a routerLink = "/vendedor/novo" class="btn btn-primary  active" role="button" aria-pressed="true">Novo</a>
+
 <br><br>
 <table class="table">
   <thead>
@@ -17,7 +22,8 @@
       <td>{{item.cpf}}</td>
       <td>{{item.lat}}</td>
       <td>{{item.longi}}</td>
-      <td><button type="button" class="btn btn-success">Editar</button> &nbsp; <button type="button" class="btn btn-danger">Exluir</button></td>
+      <td><button type="button" class="btn btn-success">Editar</button> &nbsp;
+        <button type="button" class="btn btn-danger">Exluir</button></td>
     </tr>
   </tbody>
 </table>
