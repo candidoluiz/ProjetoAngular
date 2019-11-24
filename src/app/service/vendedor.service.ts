@@ -7,7 +7,7 @@ import { VendedorDto } from '../model/vendedor';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:5000/api/produto';
+const apiUrl = 'http://localhost:8080/vendedor';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ const apiUrl = 'http://localhost:5000/api/produto';
 export class VendedorService {
 
   constructor(private http: HttpClient) { }
-
+/*
   getVendedores(): Observable<VendedorDto[]> {
     return this.http.get<VendedorDto[]>(apiUrl)
     .pipe(
@@ -60,5 +60,36 @@ export class VendedorService {
       tap(_ => console.log(`remove o vendedor com id=${id}`)),
       catchError(this.handleError<VendedorDto>('deleteVendedor'))
     );
+  }*/
+
+  getVendedores(): Observable<VendedorDto[]> {
+    return this.http.get<VendedorDto[]>(apiUrl)
+    .pipe(
+      tap(vendedores => console.log('leu os vendedores')),
+      catchError(this.handleError('getVendedoresDto', []))
+    );
+  }
+
+  getEmployees(): Observable<VendedorDto> {
+    return this.http.get<VendedorDto>(apiUrl)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getVendedorTeste() {
+    return[
+      {vendedorId: 1, nome: 'Luiz', cpf: 123456, lat: 9999, longi: 55555},
+      {vendedorId: 2, nome: 'Fernando', cpf: 654321, lat: 2222, longi: 4444},
+      {vendedorId: 3, nome: 'Felipe', cpf: 654321, lat: 2222, longi: 4444},
+      {vendedorId: 4, nome: 'Renato', cpf: 654321, lat: 2222, longi: 4444},
+    ];
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }

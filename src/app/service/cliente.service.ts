@@ -68,8 +68,8 @@ export class ClienteService {
 */
   getClienteTeste() {
     return[
-      {clienteId: 1, nome: 'Luiz'},
-      {clienteId: 2, nome: 'Fernando'}
+      {clienteId: 1, nome: 'Luiz', cnpj: 123456, razaoSocial: 6656, lat: 9999, longi: 55555},
+      {clienteId: 2, nome: 'Fernando', cnpj: 654321, razaoSocial: 7787, lat: 2222, longi: 4444},
     ];
   }
 }

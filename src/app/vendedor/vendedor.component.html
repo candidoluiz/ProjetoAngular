@@ -1,1 +1,23 @@
-<p>vendedor works!</p>
+<button type="button" class="btn btn-primary">Novo</button>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">COD</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Lat</th>
+      <th scope="col">Long</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of vendedor" >
+      <th scope="row">{{item.vendedorId}}</th>
+      <td>{{item.nome}}</td>
+      <td>{{item.cpf}}</td>
+      <td>{{item.lat}}</td>
+      <td>{{item.longi}}</td>
+      <td><button type="button" class="btn btn-success">Editar</button> &nbsp; <button type="button" class="btn btn-danger">Exluir</button></td>
+    </tr>
+  </tbody>
+</table>

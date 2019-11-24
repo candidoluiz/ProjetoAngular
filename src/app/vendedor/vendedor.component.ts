@@ -1,3 +1,4 @@
+import { VendedorService } from './../service/vendedor.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendedorComponent implements OnInit {
 
-  constructor() { }
+  vendedor: any = [];
+
+  constructor(private vendedorService: VendedorService) { }
 
   ngOnInit() {
+
+    //this.vendedor = this.vendedorService.getVendedorTeste();
+    this.caregarVendedor();
+  }
+
+  caregarVendedor()
+  {
+    return this.vendedorService.getVendedores().subscribe((data: {}) => {
+      this.vendedor = data;
+    })
   }
 
 }
