@@ -1,5 +1,7 @@
+import { ClienteDto } from './../model/cliente';
 import { ClienteService } from './../service/cliente.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -12,12 +14,10 @@ export class ClienteComponent implements OnInit {
   cliente: any = [];
 
 
-
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
 
-    //this.cliente = this.clienteService.getClienteTeste();
     this.carregarClientes();
   }
 
@@ -25,7 +25,15 @@ export class ClienteComponent implements OnInit {
 
     return this.clienteService.getClientes().subscribe((data: {}) => {
       this.cliente = data;
-    })
+    });
+
+  }
+
+  editaCliente(cliente) {
+
+  }
+
+  excluiCliente() {
 
   }
 

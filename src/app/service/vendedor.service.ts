@@ -15,7 +15,7 @@ const apiUrl = 'http://localhost:8080/vendedor';
 export class VendedorService {
 
   constructor(private http: HttpClient) { }
-/*
+
   getVendedores(): Observable<VendedorDto[]> {
     return this.http.get<VendedorDto[]>(apiUrl)
     .pipe(
@@ -23,7 +23,7 @@ export class VendedorService {
       catchError(this.handleError('getVendedoresDto', []))
     );
   }
-
+/*
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -62,19 +62,11 @@ export class VendedorService {
     );
   }*/
 
-  getVendedores(): Observable<VendedorDto[]> {
-    return this.http.get<VendedorDto[]>(apiUrl)
-    .pipe(
-      tap(vendedores => console.log('leu os vendedores')),
-      catchError(this.handleError('getVendedoresDto', []))
-    );
-  }
-
   getEmployees(): Observable<VendedorDto> {
     return this.http.get<VendedorDto>(apiUrl)
     .pipe(
       catchError(this.handleError)
-    )
+    );
   }
 
   getVendedorTeste() {
@@ -91,5 +83,11 @@ export class VendedorService {
       console.error(error);
       return of(result as T);
     };
+  }
+
+  addVendedor(vendedor): Observable<VendedorDto>{
+    return this.http.post<VendedorDto>(apiUrl, vendedor, httpOptions).pipe(
+      tap((vendedor: VendedorDto) => console.log(`adicionou o vendedor com w/ id=${vendedor.vendedorId}`)),
+      catchError(this.handleError<VendedorDto>('addVendedor')));
   }
 }

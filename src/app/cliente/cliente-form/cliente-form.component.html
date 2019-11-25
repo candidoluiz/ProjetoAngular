@@ -1,25 +1,23 @@
-<form>
-  <form>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
     <div class="form-group">
       <label for="formGroupExampleInput">Nome </label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">CNPJ</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName="cnpj">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Razão Social</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="razaoSocial">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Latitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="lat">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Longitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="longi">
     </div>
-  </form>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

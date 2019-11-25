@@ -1,21 +1,19 @@
-<form>
-  <form>
+<form #f ="ngForm" (ngSubmit)="onSubmit(f)" >
     <div class="form-group">
       <label for="formGroupExampleInput">Nome </label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" ngModel name="nome">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">CPF</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" ngModel name="cpf">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Latitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" ngModel name="lat">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Longitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" ngModel name="longi">
     </div>
-  </form>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

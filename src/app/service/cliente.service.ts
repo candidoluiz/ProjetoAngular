@@ -33,7 +33,7 @@ export class ClienteService {
       return of(result as T);
     };
   }
-/*
+
   getCliente(id: number): Observable<ClienteDto> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<ClienteDto>(url).pipe(
@@ -47,7 +47,7 @@ export class ClienteService {
       tap((cliente: ClienteDto) => console.log(`adicionou o cliente com w/ id=${cliente.clienteId}`)),
       catchError(this.handleError<ClienteDto>('addCliente')));
   }
-
+/*
   updateCliente(id, cliente): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, cliente, httpOptions).pipe(

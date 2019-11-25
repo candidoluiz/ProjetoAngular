@@ -13,6 +13,7 @@
       <th scope="col">Razão Social</th>
       <th scope="col">Lat</th>
       <th scope="col">Long</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,13 +21,13 @@
       <th scope="row">{{item.clienteId}}</th>
       <td>{{item.nome}}</td>
       <td>{{item.cnpj}}</td>
-      <td>{{item.rs}}</td>
+      <td>{{item.razaoSocial}}</td>
       <td>{{item.lat}}</td>
       <td>{{item.longi}}</td>
       <td>
           <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
-        <button type="button" class="btn btn-success">Editar</button> &nbsp;
-        <button type="button" class="btn btn-danger">Exluir</button></td>
+        <button type="button" class="btn btn-success" (click)="editaCliente(item)">Editar</button> &nbsp;
+        <button type="button" class="btn btn-danger" (click)="excluiCliente(item)">Exluir</button></td>
     </tr>
   </tbody>
 </table>
