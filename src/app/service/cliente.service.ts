@@ -30,6 +30,7 @@ export class ClienteService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
+      alert('erro');
       return of(result as T);
     };
   }
@@ -44,7 +45,9 @@ export class ClienteService {
 
   addCliente(cliente): Observable<ClienteDto>{
     return this.http.post<ClienteDto>(apiUrl, cliente, httpOptions).pipe(
-      tap((cliente: ClienteDto) => console.log(`adicionou o cliente com w/ id=${cliente.clienteId}`)),
+      tap((cliente: ClienteDto) => {
+        console.log(`adicionou o cliente com w/ id=${cliente.clienteId}`)
+      }),
       catchError(this.handleError<ClienteDto>('addCliente')));
   }
 /*

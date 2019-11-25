@@ -1,6 +1,6 @@
 import { ClienteService } from './../../service/cliente.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente-form',
@@ -11,24 +11,35 @@ export class ClienteFormComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService, private formBuider: FormBuilder) { }
 
   ngOnInit() {
 
-    this.formulario = new FormGroup({
-      nome: new FormControl(null),
-      cnpj: new FormControl(null),
-      razaoSocial: new FormControl(null),
-      lat: new FormControl(null),
-      longi: new FormControl(null)
+    this.formulario = this.formBuider.group({
+      nome: [null, Validators.required],
+      cnpj: [null, Validators.max(4)],
+      razaoSocial: [null],
+      lat: [null],
+      longi: [null]
     });
 
   }
 
-  onSubmit() {
-    //console.log(this.formulario.value);
+  verificaValidTouched(campo){
 
-    this.clienteService.addCliente(this.formulario.value).subscribe((forms) => {
+    return !this.formulario.get(campo).valid && this.formulario.get(campo).touched;
+  }
+
+  aplicationCssErro(campo){
+    return{
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    }
+  }
+
+  onSubmit() {
+
+    this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
       console.log(this.formulario.value);
 
       //redireciona para a pagina de listagem
@@ -36,8 +47,7 @@ export class ClienteFormComponent implements OnInit {
 
       //reseta o form
       this.formulario.reset();
-    },
-    (error: any) => alert('erro'));
+    });
   }
 
 }
