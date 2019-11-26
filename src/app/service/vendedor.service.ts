@@ -80,7 +80,8 @@ export class VendedorService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      console.error(error.error);
+      alert(error.error);
       return of(result as T);
     };
   }

@@ -1,6 +1,8 @@
 import { ClienteService } from './../../service/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-form',
@@ -9,20 +11,38 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class ClienteFormComponent implements OnInit {
 
+  id: string;
+  inscricao: Subscription;
+
   formulario: FormGroup;
 
-  constructor(private clienteService: ClienteService, private formBuider: FormBuilder) { }
+  constructor(private route: ActivatedRoute,
+              private clienteService: ClienteService,
+              private formBuider: FormBuilder) { }
 
   ngOnInit() {
 
-    this.formulario = this.formBuider.group({
-      nome: [null, Validators.required],
-      cnpj: [null, Validators.max(4)],
-      razaoSocial: [null],
-      lat: [null],
-      longi: [null]
-    });
+    this.inscricao = this.route.params.subscribe(
+      (params: any) => {
+        this.id = params['id'];
+      });
 
+      if(!this.id) {
+        this.formulario = this.formBuider.group({
+          nome: ['null', Validators.required],
+          cnpj: [null],
+          razaoSocial: [null],
+          lat: [null],
+          longi: [null]
+        });
+      }
+
+
+
+  }
+
+  ngOnDestroy() {
+    this.inscricao.unsubscribe();
   }
 
   verificaValidTouched(campo){
@@ -39,15 +59,17 @@ export class ClienteFormComponent implements OnInit {
 
   onSubmit() {
 
-    this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
-      console.log(this.formulario.value);
+    if ( this.formulario.valid ) {
+      this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
+        console.log(this.formulario.value);
 
-      //redireciona para a pagina de listagem
-      //this.router.navigate(['/vendedor']);
+        //redireciona para a pagina de listagem
+        //this.router.navigate(['/vendedor']);
 
-      //reseta o form
-      this.formulario.reset();
-    });
+        //reseta o form
+        this.formulario.reset();
+      });
+    }
   }
 
 }

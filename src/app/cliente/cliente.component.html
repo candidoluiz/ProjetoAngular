@@ -26,7 +26,7 @@
       <td>{{item.longi}}</td>
       <td>
           <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
-        <button type="button" class="btn btn-success" (click)="editaCliente(item)">Editar</button> &nbsp;
+        <button type="button" class="btn btn-success" [routerLink]="['/cliente/item.clienteId/editar']">Editar</button> &nbsp;
         <button type="button" class="btn btn-danger" (click)="excluiCliente(item)">Exluir</button></td>
     </tr>
   </tbody>

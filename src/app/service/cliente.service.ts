@@ -36,6 +36,9 @@ export class ClienteService {
   }
 
   getCliente(id: number): Observable<ClienteDto> {
+
+    let teste = `${apiUrl}/${id}`;
+
     const url = `${apiUrl}/${id}`;
     return this.http.get<ClienteDto>(url).pipe(
       tap(_ => console.log(`leu o cliente id=${id}`)),
