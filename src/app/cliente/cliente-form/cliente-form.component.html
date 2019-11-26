@@ -1,23 +1,28 @@
+
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+    <div class="form-group col-1">
+        <label for="formGroupExampleInputId">Cod </label>
+        <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" [value]= [id]>
+      </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Nome </label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome" [value]= [cliente.nome]>
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">CNPJ</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName="cnpj">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName="cnpj" [value]= [cliente.cnpj]>
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Razão Social</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="razaoSocial">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="razaoSocial" [value]= [cliente.razaoSocial]>
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Latitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="lat">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="lat" [value]= [cliente.lat]>
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Longitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="longi">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="longi" [value]= [cliente.longi]>
     </div>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

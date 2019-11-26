@@ -1,3 +1,4 @@
+import { ClienteDto } from './../../model/cliente';
 import { ClienteService } from './../../service/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -11,7 +12,16 @@ import { Subscription } from 'rxjs';
 })
 export class ClienteFormComponent implements OnInit {
 
-  id: string;
+  id: number = null;
+  /*
+  nome: string;
+  cnpj: string;
+  rs: string;
+  lat: string;
+  longi: string;
+*/
+  cliente: any = 0;
+
   inscricao: Subscription;
 
   formulario: FormGroup;
@@ -25,17 +35,33 @@ export class ClienteFormComponent implements OnInit {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
+
       });
 
-      if(!this.id) {
-        this.formulario = this.formBuider.group({
-          nome: ['null', Validators.required],
-          cnpj: [null],
-          razaoSocial: [null],
-          lat: [null],
-          longi: [null]
-        });
-      }
+    if (this.id == undefined) {
+
+      this.formulario = this.formBuider.group({
+        clienteId: [null],
+        nome: [null],
+        cnpj: [null],
+        razaoSocial: [null],
+        lat: [null],
+        longi: [null],
+      });
+    } else {
+
+      this.cliente = this.carregarCliente(this.id);
+      this.formulario = this.formBuider.group({
+        clienteId: [this.id],
+        nome: [this.cliente.nome],
+        cnpj: [this.cliente.cnpj],
+        razaoSocial: [this.cliente.razaoSocial],
+        lat: [this.cliente.lat],
+        longi: [this.cliente.longi]
+      });
+    }
+
+
 
 
 
@@ -70,6 +96,13 @@ export class ClienteFormComponent implements OnInit {
         this.formulario.reset();
       });
     }
+  }
+
+  carregarCliente(id: number) {
+    return this.clienteService.getCliente(id).subscribe((data:{}) =>{
+      this.cliente = data;
+      console.log('a lista ', this.cliente);
+    });
   }
 
 }
