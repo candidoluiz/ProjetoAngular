@@ -5,8 +5,8 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 
 const clientesRouters = [
   {path: 'cliente', component: ClienteComponent},
-  {path: 'cliente/:id/editar', component: ClienteFormComponent},
   {path: 'cliente/novo', component: ClienteFormComponent},
+  {path: 'cliente/:id/editar', component: ClienteFormComponent},
 ];
 
 @NgModule({

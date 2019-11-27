@@ -1,19 +1,20 @@
-<form #f ="ngForm" (ngSubmit)="onSubmit(f)" >
-    <div class="form-group">
-      <label for="formGroupExampleInput">Nome </label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" ngModel name="nome">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">CPF</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" ngModel name="cpf">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Latitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" ngModel name="lat">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Longitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" ngModel name="longi">
-    </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+    <label for="formGroupExampleInput">Nome </label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName = "nome" [value] =[nome]>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">CPF</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName ="cpf" [value] =[cpf]>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Latitude</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName ="lat" [value] =[lat]>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Longitude</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName ="longi" [value] =[longi]>
+  </div>
+<button type="submit" class="btn btn-primary">Enviar</button>
 </form>

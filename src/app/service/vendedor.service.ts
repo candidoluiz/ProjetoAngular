@@ -23,6 +23,14 @@ export class VendedorService {
       catchError(this.handleError('getVendedoresDto', []))
     );
   }
+
+  getVendedor(id: number): Observable<VendedorDto> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.get<VendedorDto>(url).pipe(
+      tap(_ => console.log(`leu o vendedor id=${id}`)),
+      catchError(this.handleError<VendedorDto>(`getVendedor id=${id}`))
+    );
+  }
 /*
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

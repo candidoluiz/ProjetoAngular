@@ -39,7 +39,7 @@ export class ClienteService {
 
     const url = `${apiUrl}/${id}`;
     return this.http.get<ClienteDto>(url).pipe(
-      tap(_ => console.log(`leu o cliente id=${id}`)),
+      //tap(_ => console.log(`leu o cliente id=${id}`)),
       catchError(this.handleError<ClienteDto>(`getCliente id=${id}`))
     );
   }

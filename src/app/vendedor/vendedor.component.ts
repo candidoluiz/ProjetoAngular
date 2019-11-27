@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { VendedorService } from './../service/vendedor.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class VendedorComponent implements OnInit {
 
   vendedor: any = [];
 
-  constructor(private vendedorService: VendedorService) { }
+  constructor(private vendedorService: VendedorService, private router: Router) { }
 
   ngOnInit() {
 
@@ -23,6 +24,12 @@ export class VendedorComponent implements OnInit {
     return this.vendedorService.getVendedores().subscribe((data: {}) => {
       this.vendedor = data;
     })
+  }
+
+  editarVendedor(id)
+  {
+
+    this.router.navigate(['/vendedor', id, 'editar']);
   }
 
 }
