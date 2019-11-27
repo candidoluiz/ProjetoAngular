@@ -1,28 +1,33 @@
 
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="bg-light">
+  <div class="row ">
     <div class="form-group col-1">
         <label for="formGroupExampleInputId">Cod </label>
         <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" [value]= [id]>
       </div>
-    <div class="form-group">
+    <div class="form-group col-12">
       <label for="formGroupExampleInput">Nome </label>
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome" [value]= [cliente.nome]>
     </div>
-    <div class="form-group">
+    <div class="form-group col-2">
       <label for="formGroupExampleInput2">CNPJ</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName="cnpj" [value]= [cliente.cnpj]>
+      <input mask="00.000.000/0000"  [showMaskTyped] = "true"  class="form-control" id="formGroupExampleInput2" placeholder="Apenas números" formControlName="cnpj" [value]= [cliente.cnpj]>
     </div>
-    <div class="form-group">
+    <div class="form-group col-12">
       <label for="formGroupExampleInput2">Razão Social</label>
       <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="razaoSocial" [value]= [cliente.razaoSocial]>
     </div>
-    <div class="form-group">
+  </div>
+    <div class="row">
+    <div class="form-group col-6">
       <label for="formGroupExampleInput2">Latitude</label>
       <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="lat" [value]= [cliente.lat]>
     </div>
-    <div class="form-group">
+    <div class="form-group col-6">
       <label for="formGroupExampleInput2">Longitude</label>
       <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="longi" [value]= [cliente.longi]>
     </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+  <button type="submit" class="btn btn-primary">GRAVAR</button>
 </form>
+

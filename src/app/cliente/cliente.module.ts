@@ -5,9 +5,12 @@ import { RouterModule } from '@angular/router';
 
 import { ClienteRoutingModule } from './cliente.routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import {NgxMaskModule} from 'ngx-mask';
 
 
 import { ClienteComponent } from './cliente.component';
+import { from } from 'rxjs';
+
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { ClienteComponent } from './cliente.component';
     ClienteRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
-  ]
+    RouterModule,
+    NgxMaskModule.forRoot()
+  ],
+
 })
 export class ClienteModule { }
