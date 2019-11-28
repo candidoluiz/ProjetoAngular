@@ -18,6 +18,7 @@ export class VendedorFormComponent implements OnInit {
   formulario: FormGroup;
 
 
+
   onSubmit(form) {
     this.vendedorService.addVendedor(form.value).subscribe((forms) => {
       console.log(form.value);
@@ -65,6 +66,7 @@ export class VendedorFormComponent implements OnInit {
         console.log(this.vendedor);
       });
   }
+
 
 
 
