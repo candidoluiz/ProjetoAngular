@@ -51,14 +51,6 @@ export class ClienteService {
       }),
       catchError(this.handleError<ClienteDto>('addCliente')));
   }
-/*
-  updateCliente(id, cliente): Observable<any> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.put(url, cliente, httpOptions).pipe(
-      tap(_ => console.log(`atualiza o cliente com id=${id}`)),
-      catchError(this.handleError<any>('updateCliente'))
-    );
-  }
 
   deleteCliente(id): Observable<ClienteDto> {
     const url = `${apiUrl}/delete/${id}`;
@@ -68,6 +60,16 @@ export class ClienteService {
       catchError(this.handleError<ClienteDto>('deleteCliente'))
     );
   }
+/*
+  updateCliente(id, cliente): Observable<any> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.put(url, cliente, httpOptions).pipe(
+      tap(_ => console.log(`atualiza o cliente com id=${id}`)),
+      catchError(this.handleError<any>('updateCliente'))
+    );
+  }
+
+
 */
   getClienteTeste() {
     return[

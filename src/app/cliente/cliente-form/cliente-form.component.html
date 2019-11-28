@@ -1,13 +1,14 @@
 
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="bg-light">
-  <div class="row ">
+  <div class="row " >
     <div class="form-group col-1">
         <label for="formGroupExampleInputId">Cod </label>
         <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" [value]= [id]>
       </div>
     <div class="form-group col-12">
       <label for="formGroupExampleInput">Nome </label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome" [value]= [cliente.nome]>
+      <input  type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o nome" formControlName="nome" [value]= [cliente.nome]>
+
     </div>
     <div class="form-group col-2">
       <label for="formGroupExampleInput2">CNPJ</label>
@@ -30,4 +31,7 @@
   </div>
   <button type="submit" class="btn btn-primary">GRAVAR</button>
 </form>
+
+
+
 

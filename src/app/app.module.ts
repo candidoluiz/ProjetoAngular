@@ -15,6 +15,7 @@ import { VendedorModule } from './vendedor/vendedor.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { LoginService } from './service/login.service';
 import { LoginModule } from './login/login.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { LoginModule } from './login/login.module';
     ClienteModule,
     VendedorModule,
     LoginModule,
-    routing
+    routing,
+    ModalModule.forRoot()
   ],
   providers: [ClienteService, VendedorService, LoginService],
   bootstrap: [AppComponent]

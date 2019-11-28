@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ClienteRoutingModule } from './cliente.routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import {NgxMaskModule} from 'ngx-mask';
+import { ModalModule,BsModalRef  } from 'ngx-bootstrap/modal';
 
 
 import { ClienteComponent } from './cliente.component';
@@ -21,8 +22,12 @@ import { from } from 'rxjs';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    ModalModule.forRoot()
   ],
+  providers: [
+    BsModalRef
+],
 
 })
 export class ClienteModule { }

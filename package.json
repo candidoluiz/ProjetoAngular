@@ -22,6 +22,8 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "bootstrap": "^4.4.0",
     "jquery": "^3.4.1",
+    "ngx-bootstrap": "^5.2.0",
+    "ngx-csv": "^0.3.1",
     "ngx-mask": "^8.1.6",
     "popper.js": "^1.16.0",
     "rxjs": "~6.4.0",

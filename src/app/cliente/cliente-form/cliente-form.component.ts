@@ -1,9 +1,11 @@
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
 import { ClienteDto } from './../../model/cliente';
 import { ClienteService } from './../../service/cliente.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-cliente-form',
@@ -12,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class ClienteFormComponent implements OnInit {
 
+  modalRef: BsModalRef;
   id: number = null;
 
   cliente: ClienteDto = new ClienteDto();
@@ -22,7 +25,8 @@ export class ClienteFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private clienteService: ClienteService,
-              private formBuider: FormBuilder) { }
+              private formBuider: FormBuilder,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
 
@@ -34,11 +38,11 @@ export class ClienteFormComponent implements OnInit {
 
         this.formulario = this.formBuider.group({
           clienteId: [this.id],
-          nome: [this.cliente.nome],
-          cnpj: [this.cliente.cnpj],
-          razaoSocial: [this.cliente.razaoSocial],
-          lat: [this.cliente.lat],
-          longi: [this.cliente.longi]
+          nome: [this.cliente.nome, Validators.required],
+          cnpj: [this.cliente.cnpj, Validators.required],
+          razaoSocial: [this.cliente.razaoSocial, Validators.required],
+          lat: [this.cliente.lat, Validators.required],
+          longi: [this.cliente.longi, Validators.required]
           });
 
       });
@@ -60,6 +64,17 @@ export class ClienteFormComponent implements OnInit {
     }
   }
 
+  obrigatorio(formGoup: FormGroup){
+    Object.keys(formGoup.controls).forEach(campo =>{
+      const controle = formGoup.get(campo);
+      controle.markAsDirty;
+      if (controle instanceof FormGroup)
+      {
+        this.obrigatorio(controle)
+      }
+    });
+  }
+
   onSubmit() {
 
     if ( this.formulario.valid ) {
@@ -72,6 +87,8 @@ export class ClienteFormComponent implements OnInit {
         //reseta o form
         this.formulario.reset();
       });
+    }else{
+        this.obrigatorio(this.formulario);
     }
   }
 
@@ -80,6 +97,10 @@ export class ClienteFormComponent implements OnInit {
       this.cliente = data;
       console.log('a lista ', this.cliente);
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

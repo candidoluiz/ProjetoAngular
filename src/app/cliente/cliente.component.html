@@ -2,7 +2,9 @@
 <br>
 
 <!-- <button type="button" class="btn btn-primary" >Novo</button> -->
-<a routerLink = "/cliente/novo" class="btn btn-primary  active" role="button" aria-pressed="true">Novo</a>
+<a routerLink = "/cliente/novo" class="btn btn-primary  active" role="button" aria-pressed="true">Novo</a> &nbsp;
+<button class="btn btn-secondary" (click)="onClick()">Exportar CSV</button>
+
 <br><br>
 <table class="table ">
   <thead>
@@ -27,7 +29,17 @@
       <td>
           <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
         <button type="button" class="btn btn-success" [routerLink]="['/cliente/',item.clienteId,'editar']">Editar</button> &nbsp;
-        <button type="button" class="btn btn-danger" (click)="excluiCliente(item)">Exluir</button></td>
+        <button type="button" class="btn btn-danger" (click)="openModal(item.clienteId)">Excluir</button></td>
     </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-danger" (click)="openModal(template)">Excluir</button>
+  <br><br>
+  <pre class="card card-block card-header"></pre>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>DESEJA REALMENTE EXCLUIR ESSE ITEM ?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button> &nbsp;
+      <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+    </div>
+  </ng-template>
