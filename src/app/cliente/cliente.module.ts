@@ -7,10 +7,10 @@ import { ClienteRoutingModule } from './cliente.routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import {NgxMaskModule} from 'ngx-mask';
 import { ModalModule,BsModalRef  } from 'ngx-bootstrap/modal';
-
-
 import { ClienteComponent } from './cliente.component';
-import { from } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 
@@ -23,8 +23,14 @@ import { from } from 'rxjs';
     FormsModule,
     RouterModule,
     NgxMaskModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatTableModule,
+    MatFormFieldModule,
+    NgxDatatableModule
   ],
+
+
+  exports: [],
   providers: [
     BsModalRef
 ],

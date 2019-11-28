@@ -1,11 +1,23 @@
 <h1 style="text-align: center;">LISTA DE CLIENTES</h1>
 <br>
-
 <!-- <button type="button" class="btn btn-primary" >Novo</button> -->
 <a routerLink = "/cliente/novo" class="btn btn-primary  active" role="button" aria-pressed="true">Novo</a> &nbsp;
 <button class="btn btn-secondary" (click)="onClick()">Exportar CSV</button>
-
 <br><br>
+<div class="col-3 ">
+  <div class="md-form">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      class="form-control"
+      id="search"
+      mdbInput
+    />
+    <label for="search">Pesquisar</label>
+  </div>
+</div>
+
+
 <table class="table ">
   <thead>
     <tr class="bg-light">
@@ -33,9 +45,13 @@
     </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-danger" (click)="openModal(template)">Excluir</button>
   <br><br>
-  <pre class="card card-block card-header"></pre>
+<!--  --------------------------------- -->
+
+
+<!-- ---------------------------------- -->
+
+
   <ng-template #template>
     <div class="modal-body text-center">
       <p>DESEJA REALMENTE EXCLUIR ESSE ITEM ?</p>

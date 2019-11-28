@@ -1,33 +1,39 @@
 import { ClienteDto } from './../model/cliente';
 import { ClienteService } from './../service/cliente.service';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
+import {MatTableDataSource} from '@angular/material/table';
+
+
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
 
 @Component({
   selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+  templateUrl: 'cliente.component.html',
+  styleUrls: ['./cliente.component.css'],
 })
+
 export class ClienteComponent implements OnInit {
 
-  @ViewChild('template', { static: true }) deleteModal;
+
+ @ViewChild('template', { static: true }) deleteModal;
+
+
 
   message: string;
   modalRef: BsModalRef;
   cliente: ClienteDto[];
   arquivo: ngxCsv;
   clienteSelecionado: ClienteDto;
-
-  datas = [{
-    name: "Test 1",
-    age: 13,
-    average: 8.2,
-    approved: true,
-    description: "using 'Content here, content here' "
-  }];
+  lista: MatTableDataSource<ClienteDto>;
 
      options = {
     fieldSeparator: ',',
@@ -39,16 +45,20 @@ export class ClienteComponent implements OnInit {
     useBom: true,
     noDownload: false
 
-  };
+  }
+
+
 
 
   constructor(private clienteService: ClienteService, private modalService: BsModalService) { }
+
 
   ngOnInit() {
 
     this.carregarClientes();
 
   }
+
 
   carregarClientes() {
 
@@ -61,25 +71,26 @@ export class ClienteComponent implements OnInit {
 
   }
 
-  confirm(){
+  confirm() {
     this.clienteService.deleteCliente(this.clienteSelecionado).subscribe(
+        success => this.carregarClientes()
 
     );
+    this.modalRef.hide();
 
   }
-  decline(){
+  decline() {
     this.message = 'Declined!';
     this.modalRef.hide();
   }
 
-  onClick()
-  {
+  onClick() {
    this.arquivo = new ngxCsv(this.cliente, 'teste', this.options);
   }
 
   openModal(clienteId) {
-    this.clienteSelecionado=clienteId;
-    this.modalRef = this.modalService.show(this.deleteModal,{class: 'modal-sm'});
+    this.clienteSelecionado = clienteId;
+    this.modalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});
   }
 
 }
