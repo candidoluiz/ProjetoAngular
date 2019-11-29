@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 
 
@@ -45,12 +46,12 @@ export class ClienteComponent implements OnInit {
     useBom: true,
     noDownload: false
 
-  }
+  };
 
 
 
 
-  constructor(private clienteService: ClienteService, private modalService: BsModalService) { }
+  constructor(private clienteService: ClienteService, private router: Router,  private modalService: BsModalService) { }
 
 
   ngOnInit() {
@@ -64,7 +65,6 @@ export class ClienteComponent implements OnInit {
 
      this.clienteService.getClientes().subscribe(data => {
        this.cliente = data;
-       console.log('telaCliente',data)
      });
   }
 

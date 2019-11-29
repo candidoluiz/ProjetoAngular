@@ -18,7 +18,7 @@ export class ClienteFormComponent implements OnInit {
               private router: Router,
               private clienteService: ClienteService,
               private formBuider: FormBuilder,
-              private modalService: BsModalService,) { }
+              private modalService: BsModalService ) { }
 
   modalRef: BsModalRef;
   id: number = null;
@@ -37,16 +37,17 @@ export class ClienteFormComponent implements OnInit {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
-        if ( this.id )
-          this.carregarCliente(this.id);
+        if ( this.id ) {
+         this.carregarCliente(this.id);
+        }
 
         this.formulario = this.formBuider.group({
-          clienteId: [this.id],
-          nome: [this.cliente.nome, Validators.required],
+          clienteId: [this.cliente.clienteId],
+          nome: [this.cliente.nome],
           cnpj: [this.cliente.cnpj, Validators.required],
-          razaoSocial: [this.cliente.razaoSocial, Validators.required],
-          lat: [this.cliente.lat, Validators.required],
-          longi: [this.cliente.longi, Validators.required]
+          razaoSocial: [this.cliente.razaoSocial],
+          lat: [this.cliente.lat],
+          longi: [this.cliente.longi]
           });
 
       });
@@ -73,10 +74,9 @@ export class ClienteFormComponent implements OnInit {
 
    // if ( this.formulario.valid ) {
       this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
-        console.log(this.formulario.value);
 
         //redireciona para a pagina de listagem
-        this.router.navigate(['/vendedor']);
+        this.router.navigate(['/cliente']);
 
         //reseta o form
         //this.formulario.reset();

@@ -48,6 +48,7 @@ export class ClienteService {
     return this.http.post<ClienteDto>(apiUrl, cliente, httpOptions).pipe(
       tap((cliente: ClienteDto) => {
         console.log(`adicionou o cliente com w/ id=${cliente.clienteId}`)
+        return cliente;
       }),
       catchError(this.handleError<ClienteDto>('addCliente')));
   }

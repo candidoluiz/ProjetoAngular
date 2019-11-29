@@ -23,8 +23,16 @@
       <td>{{item.cpf}}</td>
       <td>{{item.lat}}</td>
       <td>{{item.longi}}</td>
-      <td><button type="button" class="btn btn-success" (click)="editarVendedor(item.vendedorId)" >Editar</button> &nbsp;
-        <button type="button" class="btn btn-danger">Exluir</button></td>
+      <td><button type="button" class="btn btn-success"  [routerLink]="['/vendedor/',item.vendedorId,'editar']" >Editar</button> &nbsp;
+        <button type="button" class="btn btn-danger" (click)="openModal(item.vendedorId)">Excluir</button></td>
       </tr>
   </tbody>
 </table>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>DESEJA REALMENTE EXCLUIR ESSE ITEM ?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button> &nbsp;
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>

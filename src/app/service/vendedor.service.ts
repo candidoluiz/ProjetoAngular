@@ -31,6 +31,15 @@ export class VendedorService {
       catchError(this.handleError<VendedorDto>(`getVendedor id=${id}`))
     );
   }
+
+  deleteVendedor(id): Observable<VendedorDto> {
+    const url = `${apiUrl}/delete/${id}`;
+
+    return this.http.delete<VendedorDto>(url, httpOptions).pipe(
+      tap(_ => console.log(`remove o vendedor com id=${id}`)),
+      catchError(this.handleError<VendedorDto>('deleteVendedor'))
+    );
+  }
 /*
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
