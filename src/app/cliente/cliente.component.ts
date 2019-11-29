@@ -1,6 +1,6 @@
 import { ClienteDto } from './../model/cliente';
 import { ClienteService } from './../service/cliente.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
 import {MatTableDataSource} from '@angular/material/table';
@@ -64,6 +64,7 @@ export class ClienteComponent implements OnInit {
 
      this.clienteService.getClientes().subscribe(data => {
        this.cliente = data;
+       console.log('telaCliente',data)
      });
   }
 
@@ -84,7 +85,7 @@ export class ClienteComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  onClick() {
+  exportarCrv() {
    this.arquivo = new ngxCsv(this.cliente, 'teste', this.options);
   }
 

@@ -3,7 +3,7 @@ import { ClienteDto } from './../../model/cliente';
 import { ClienteService } from './../../service/cliente.service';
 import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 
@@ -14,6 +14,12 @@ import { Subscription } from 'rxjs';
 })
 export class ClienteFormComponent implements OnInit {
 
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private clienteService: ClienteService,
+              private formBuider: FormBuilder,
+              private modalService: BsModalService,) { }
+
   modalRef: BsModalRef;
   id: number = null;
 
@@ -23,10 +29,8 @@ export class ClienteFormComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private route: ActivatedRoute,
-              private clienteService: ClienteService,
-              private formBuider: FormBuilder,
-              private modalService: BsModalService) { }
+
+
 
   ngOnInit() {
 
@@ -64,32 +68,23 @@ export class ClienteFormComponent implements OnInit {
     }
   }
 
-  obrigatorio(formGoup: FormGroup){
-    Object.keys(formGoup.controls).forEach(campo =>{
-      const controle = formGoup.get(campo);
-      controle.markAsDirty;
-      if (controle instanceof FormGroup)
-      {
-        this.obrigatorio(controle)
-      }
-    });
-  }
 
-  onSubmit() {
+  salvar() {
 
-    if ( this.formulario.valid ) {
+   // if ( this.formulario.valid ) {
       this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
         console.log(this.formulario.value);
 
         //redireciona para a pagina de listagem
-        //this.router.navigate(['/vendedor']);
+        this.router.navigate(['/vendedor']);
 
         //reseta o form
-        this.formulario.reset();
+        //this.formulario.reset();
       });
-    }else{
-        this.obrigatorio(this.formulario);
-    }
+   // }else{
+
+   //     this.verificaValidacoesForm(this.formulario);
+  //  }
   }
 
   carregarCliente(id: number) {
@@ -101,6 +96,18 @@ export class ClienteFormComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup){
+    Object.keys(formGroup.controls).forEach(campo =>{
+      const controle = formGroup.get(campo);
+      controle.markAsDirty();
+      if (controle instanceof FormGroup)
+      {
+        this.verificaValidacoesForm(controle)
+      }
+    });
+
   }
 
 }

@@ -1,0 +1,35 @@
+<div>
+  <h3>
+    Distribuição de Vendedores
+  </h3>
+<div>
+  <button class="btn btn-primary" (click)="distribuir()" >Fazer Distribuição</button> &nbsp;
+  <button class="btn btn-warning" (click)="relatorio()" >Gerar Relatório</button>
+</div>
+
+  <input
+    type="text"
+    style="padding:8px;margin:15px auto;width:30%; "
+    placeholder="Type to filter the name column..."
+    (keyup)="updateFilter($event)"
+  />
+  <ngx-datatable
+    #table
+    class="bootstrap"
+    [columns]="columns"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [limit]="20"
+    [rows]="temp"
+  >
+  </ngx-datatable>
+
+  <!-- <ngx-datatable #table>
+    <ngx-datatable-column name="name"></ngx-datatable-column>
+    <ngx-datatable-column name="Rasao"></ngx-datatable-column>
+    <ngx-datatable-column name="Vendedor"></ngx-datatable-column>
+  </ngx-datatable> -->
+
+</div>

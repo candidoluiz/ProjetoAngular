@@ -8,7 +8,10 @@ export class ClienteDto{
   razaoSocial: string;
   lat: string;
   longi: string;
+  distancia: string;
   vendedorDto: VendedorDto;
+
+
 
 
 }

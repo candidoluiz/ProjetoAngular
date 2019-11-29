@@ -60,9 +60,9 @@ export class ClienteService {
       catchError(this.handleError<ClienteDto>('deleteCliente'))
     );
   }
-/*
+
   updateCliente(id, cliente): Observable<any> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}/update/${id}`;
     return this.http.put(url, cliente, httpOptions).pipe(
       tap(_ => console.log(`atualiza o cliente com id=${id}`)),
       catchError(this.handleError<any>('updateCliente'))
@@ -70,7 +70,7 @@ export class ClienteService {
   }
 
 
-*/
+
   getClienteTeste() {
     return[
       {clienteId: 1, nome: 'Luiz', cnpj: 123456, razaoSocial: 6656, lat: 9999, longi: 55555},
