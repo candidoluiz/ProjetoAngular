@@ -63,13 +63,22 @@ export class VendedorFormComponent implements OnInit {
     this.inscricao.unsubscribe();
   }
 
-  carregarVendedor(id)
-  {
+  carregarVendedor(id) {
       this.vendedorService.getVendedor(id).subscribe(data => {
         this.vendedor = data;
-        console.log(this.vendedor);
+        this.carregarFormulario(this.vendedor);
       });
   }
+
+  carregarFormulario(vendedor: VendedorDto) {
+    this.formulario = this.formBuilder.group({
+      vendedorId:[vendedor.vendedorId],
+      nome: [vendedor.nome],
+      cpf: [vendedor.cpf, Validators.required],
+      lat: [vendedor.lat],
+      longi: [vendedor.longi]
+      });
+   }
 
   salvar()
   {

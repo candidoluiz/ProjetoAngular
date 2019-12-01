@@ -26,7 +26,7 @@ export class VendedorComponent implements OnInit {
     decimalseparator: '.',
     showLabels: true,
     showTitle: false,
-    title: 'Lista de Clientes',
+    title: 'Lista de Vendedores',
     useBom: true,
     noDownload: false
 
@@ -35,23 +35,19 @@ export class VendedorComponent implements OnInit {
   constructor(private vendedorService: VendedorService, private router: Router, private modalService: BsModalService) { }
 
   ngOnInit() {
-
-    //this.vendedor = this.vendedorService.getVendedorTeste();
     this.caregarVendedor();
   }
 
   caregarVendedor()
   {
-    return this.vendedorService.getVendedores().subscribe(data => {
+      this.vendedorService.getVendedores().subscribe(data => {
       this.vendedor = data;
     });
   }
 
-  // editarVendedor(id)
-  // {
-
-  //   this.router.navigate(['/vendedor', id, 'editar']);
-  // }
+  editButtonCick(id) {
+    this.router.navigate(['/vendedor', id , 'editar']);
+  }
 
   confirm() {
     this.vendedorService.deleteVendedor(this.vendedorSelecionado).subscribe(
@@ -70,5 +66,6 @@ export class VendedorComponent implements OnInit {
     this.vendedorSelecionado = vendedorId;
     this.modalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});
   }
+
 
 }
