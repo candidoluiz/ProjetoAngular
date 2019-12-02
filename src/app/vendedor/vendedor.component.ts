@@ -62,6 +62,10 @@ export class VendedorComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  exportarCrv() {
+    this.arquivo = new ngxCsv(this.vendedor, 'teste', this.options);
+   }
+
   openModal(vendedorId) {
     this.vendedorSelecionado = vendedorId;
     this.modalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});

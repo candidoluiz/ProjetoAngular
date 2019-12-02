@@ -35,7 +35,7 @@ export class GerencialComponent implements OnInit {
   }
 
   columns = [{ prop: 'clienteId', }, { name: 'razaoSocial' },
-  { name: 'Cod.Vendedor',  }, { name: 'Vendedor' }, { name: 'Distancia' }];
+  { prop: 'vendedorDto.vendedorId', name: 'Cod. Vendedor'}, { prop: 'vendedorDto.nome', name: 'Vendedor' }, { name: 'Distancia' }];
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
 
   ColumnMode = ColumnMode;
@@ -77,8 +77,8 @@ export class GerencialComponent implements OnInit {
     this.cliente = new ClienteDto();
     this.cliente.clienteId = element.clienteId;
     this.cliente.razaoSocial = element.razaoSocial;
-    // this.cliente.vendedorDto.vendedorId = element.vendedorDto.vendedorId;
-    // this.cliente.vendedorDto.nome = element.vendedorDto.nome;
+    this.cliente.vendedorDto.vendedorId = element.vendedorDto.vendedorId;
+    this.cliente.vendedorDto.nome = element.vendedorDto.nome;
     // this.cliente.distancia = element.distancia;
     this.ArrayCliente.push(this.cliente);
     console.log(element);
