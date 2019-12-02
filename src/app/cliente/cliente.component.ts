@@ -68,8 +68,8 @@ export class ClienteComponent implements OnInit {
      });
   }
 
-  editaCliente(cliente) {
-
+  editButtonCick(id) {
+    this.router.navigate(['/cliente', id , 'editar']);
   }
 
   confirm() {

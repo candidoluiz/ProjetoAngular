@@ -63,10 +63,10 @@ export class VendedorFormComponent implements OnInit {
     this.inscricao.unsubscribe();
   }
 
-  carregarVendedor(id)
-  {
+  carregarVendedor(id) {
       this.vendedorService.getVendedor(id).subscribe(data => {
         this.vendedor = data;
+<<<<<<< HEAD
         console.log(this.vendedor);
         this.formulario = this.formBuilder.group({
           vendedorId:[this.id],
@@ -75,8 +75,21 @@ export class VendedorFormComponent implements OnInit {
           lat: [this.vendedor.lat],
           longi: [this.vendedor.longi]
         });
+=======
+        this.carregarFormulario(this.vendedor);
+>>>>>>> 92695258d27388bf0c3664bf67f76e5aea6007f6
       });
   }
+
+  carregarFormulario(vendedor: VendedorDto) {
+    this.formulario = this.formBuilder.group({
+      vendedorId:[vendedor.vendedorId],
+      nome: [vendedor.nome],
+      cpf: [vendedor.cpf, Validators.required],
+      lat: [vendedor.lat],
+      longi: [vendedor.longi]
+      });
+   }
 
   salvar()
   {

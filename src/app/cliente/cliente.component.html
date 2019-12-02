@@ -32,7 +32,8 @@
       <td>{{item.longi}}</td>
       <td>
           <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
-        <button type="button" class="btn btn-success" [routerLink]="['/cliente/',item.clienteId,'editar']">Editar</button> &nbsp;
+        <!-- <button type="button" class="btn btn-success" [routerLink]="['/cliente/',item.clienteId,'editar']">Editar</button> &nbsp; -->
+        <button type="button" class="btn btn-success" (click)="editButtonCick(item.clienteId)">Editar</button> &nbsp;
         <button type="button" class="btn btn-danger" (click)="openModal(item.clienteId)">Excluir</button></td>
     </tr>
   </tbody>

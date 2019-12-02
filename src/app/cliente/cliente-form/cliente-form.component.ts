@@ -1,3 +1,4 @@
+import { map, switchMap } from 'rxjs/operators';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal/';
 import { ClienteDto } from './../../model/cliente';
 import { ClienteService } from './../../service/cliente.service';
@@ -28,32 +29,66 @@ export class ClienteFormComponent implements OnInit {
   inscricao: Subscription;
 
   formulario: FormGroup;
+  teste: any;
 
 
 
 
   ngOnInit() {
 
+
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
         if ( this.id ) {
-         this.carregarCliente(this.id);
-        }
+          this.carregarCliente(this.id);
+        } else {
 
         this.formulario = this.formBuider.group({
-          clienteId: [this.cliente.clienteId],
-          nome: [this.cliente.nome],
-          cnpj: [this.cliente.cnpj, Validators.required],
-          razaoSocial: [this.cliente.razaoSocial],
-          lat: [this.cliente.lat],
-          longi: [this.cliente.longi]
-          });
+          clienteId: [null],
+          nome: [null],
+          cnpj: [null, Validators.required],
+          razaoSocial: [null],
+          lat: [null],
+          longi: [null]
+          }); }
 
       });
+<<<<<<< HEAD
 
 
   }
+=======
+    // let registro = null;
+    // this.route.params
+    // .pipe(
+    //   map((params: any) => params['id']),
+    //   switchMap(id => this.clienteService.getCliente(id))
+    //   )
+    // .subscribe(cliente => this.updateForm(cliente));
+
+    // this.formulario = this.formBuider.group({
+    //   clienteId: [null],
+    //   nome: [null],
+    //   cnpj: [null],
+    //   razaoSocial: [null],
+    //   lat: [null],
+    //   longi: [null]
+    // });
+
+ }
+      // updateForm(cliente) {
+      // this.formulario.patchValue({
+      // clienteId: cliente.clienteId,
+      // nome: cliente.nome,
+      // cnpj: cliente.cnpj,
+      // razaoSocial: cliente.razaoSocial,
+      // lat: cliente.lat,
+      // longi: cliente.longi
+
+      //   });
+      // }
+>>>>>>> 92695258d27388bf0c3664bf67f76e5aea6007f6
 
   ngOnDestroy() {
     this.inscricao.unsubscribe();
@@ -81,6 +116,7 @@ export class ClienteFormComponent implements OnInit {
   carregarCliente(id: number) {
    this.clienteService.getCliente(id).subscribe(data =>{
       this.cliente = data;
+<<<<<<< HEAD
       console.log('a lista ', this.cliente);
       this.formulario = this.formBuider.group({
         clienteId: [this.cliente.clienteId],
@@ -91,8 +127,23 @@ export class ClienteFormComponent implements OnInit {
         longi: [this.cliente.longi]
         });
 
+=======
+      this.carregarFormulario(this.cliente);
+>>>>>>> 92695258d27388bf0c3664bf67f76e5aea6007f6
     });
   }
+
+
+  carregarFormulario(cliente: ClienteDto) {
+    this.formulario = this.formBuider.group({
+      clienteId: [cliente.clienteId],
+      nome: [cliente.nome],
+      cnpj: [cliente.cnpj],
+      razaoSocial: [cliente.razaoSocial],
+      lat: [cliente.lat],
+      longi: [cliente.longi]
+      });
+   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

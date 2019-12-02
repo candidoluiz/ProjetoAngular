@@ -20,10 +20,10 @@
     <tr *ngFor="let item of vendedor" >
       <th scope="row">{{item.vendedorId}}</th>
       <td>{{item.nome}}</td>
-      <td>{{item.cpf}}</td>
+      <td> <span mask="000.000.000-00">{{item.cpf}}</span></td>
       <td>{{item.lat}}</td>
       <td>{{item.longi}}</td>
-      <td><button type="button" class="btn btn-success"  [routerLink]="['/vendedor/',item.vendedorId,'editar']" >Editar</button> &nbsp;
+      <td><button type="button" class="btn btn-success" (click)="editButtonCick(item.vendedorId)"  >Editar</button> &nbsp;
         <button type="button" class="btn btn-danger" (click)="openModal(item.vendedorId)">Excluir</button></td>
       </tr>
   </tbody>
