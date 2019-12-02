@@ -51,6 +51,8 @@ export class ClienteFormComponent implements OnInit {
           });
 
       });
+
+
   }
 
   ngOnDestroy() {
@@ -71,26 +73,24 @@ export class ClienteFormComponent implements OnInit {
 
 
   salvar() {
-
-   // if ( this.formulario.valid ) {
       this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
-
-        //redireciona para a pagina de listagem
         this.router.navigate(['/cliente']);
-
-        //reseta o form
-        //this.formulario.reset();
       });
-   // }else{
-
-   //     this.verificaValidacoesForm(this.formulario);
-  //  }
   }
 
   carregarCliente(id: number) {
    this.clienteService.getCliente(id).subscribe(data =>{
       this.cliente = data;
       console.log('a lista ', this.cliente);
+      this.formulario = this.formBuider.group({
+        clienteId: [this.cliente.clienteId],
+        nome: [this.cliente.nome],
+        cnpj: [this.cliente.cnpj, Validators.required],
+        razaoSocial: [this.cliente.razaoSocial],
+        lat: [this.cliente.lat],
+        longi: [this.cliente.longi]
+        });
+
     });
   }
 

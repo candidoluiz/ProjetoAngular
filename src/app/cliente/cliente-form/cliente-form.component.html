@@ -2,31 +2,31 @@
 <form [formGroup]="formulario" (ngSubmit)="salvar()" class="bg-light">
   <div class="row " >
     <div class="form-group col-1">
-        <label for="formGroupExampleInputId">Cod </label> {{cliente.nome}}
-        <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" [value]= [cliente.clienteId]>
+        <label for="formGroupExampleInputId">Cod </label>
+        <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" >
       </div>
     <div class="form-group col-12">
       <label for="formGroupExampleInput">Nome </label>
-      <input  type="text" class="form-control" id="formGroupExampleInput1" placeholder="nome" formControlName="nome" [value]= [cliente.nome]>
+      <input  type="text" class="form-control" id="formGroupExampleInput1" placeholder="nome" formControlName="nome" >
 
     </div>
     <div class="form-group col-2">
       <label for="formGroupExampleInput2">CNPJ</label>
-      <input mask="00.000.000/0000"  class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="cnpj" [value]= [cliente.cnpj]>
+      <input  class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="cnpj" >
     </div>
     <div class="form-group col-12">
       <label for="formGroupExampleInput2">Razão Social</label>
-      <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="" formControlName="razaoSocial" [value]= [cliente.razaoSocial]>
+      <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="" formControlName="razaoSocial" >
     </div>
   </div>
     <div class="row">
     <div class="form-group col-6">
       <label for="formGroupExampleInput2">Latitude</label>
-      <input  type="text" class="form-control" id="formGroupExampleInput4" placeholder="" formControlName="lat" [value]= [cliente.lat]>
+      <input  type="text" class="form-control" id="formGroupExampleInput4" placeholder="" formControlName="lat" >
     </div>
     <div class="form-group col-6">
       <label for="formGroupExampleInput2">Longitude</label>
-      <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="" formControlName="longi" [value]= [cliente.longi]>
+      <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="" formControlName="longi" >
     </div>
   </div>
   <button type="submit" class="btn btn-primary">GRAVAR</button>

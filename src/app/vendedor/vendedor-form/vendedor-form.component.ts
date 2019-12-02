@@ -68,6 +68,13 @@ export class VendedorFormComponent implements OnInit {
       this.vendedorService.getVendedor(id).subscribe(data => {
         this.vendedor = data;
         console.log(this.vendedor);
+        this.formulario = this.formBuilder.group({
+          vendedorId:[this.id],
+          nome: [this.vendedor.nome],
+          cpf: [this.vendedor.cpf, Validators.required],
+          lat: [this.vendedor.lat],
+          longi: [this.vendedor.longi]
+        });
       });
   }
 

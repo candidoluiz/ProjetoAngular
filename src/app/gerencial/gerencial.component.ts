@@ -64,6 +64,9 @@ export class GerencialComponent implements OnInit {
 
 
   distribuir() {
+    this.clienteService.getGerencial().subscribe(data =>{
+      console.log(data);
+    })
 
   }
 

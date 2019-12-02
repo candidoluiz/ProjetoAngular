@@ -27,6 +27,15 @@ export class ClienteService {
     );
   }
 
+  getGerencial(): Observable<ClienteDto[]> {
+    const url = `${apiUrl}/gerencial/distribuir`;
+    return this.http.get<ClienteDto[]>(apiUrl)
+    .pipe(
+      tap(clientes => console.log('leu os clientes')),
+      catchError(this.handleError('getVendedoresDto', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
