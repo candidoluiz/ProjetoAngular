@@ -66,7 +66,6 @@ export class VendedorFormComponent implements OnInit {
   carregarVendedor(id) {
       this.vendedorService.getVendedor(id).subscribe(data => {
         this.vendedor = data;
-<<<<<<< HEAD
         console.log(this.vendedor);
         this.formulario = this.formBuilder.group({
           vendedorId:[this.id],
@@ -75,9 +74,6 @@ export class VendedorFormComponent implements OnInit {
           lat: [this.vendedor.lat],
           longi: [this.vendedor.longi]
         });
-=======
-        this.carregarFormulario(this.vendedor);
->>>>>>> 92695258d27388bf0c3664bf67f76e5aea6007f6
       });
   }
 
