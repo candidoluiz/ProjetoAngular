@@ -12,8 +12,6 @@ import { ngxCsv } from 'ngx-csv/ngx-csv';
 })
 export class GerencialComponent implements OnInit {
 
-
-
   constructor(private clienteService: ClienteService) { }
 
   arquivo: ngxCsv;
@@ -32,14 +30,13 @@ export class GerencialComponent implements OnInit {
     useBom: true,
     noDownload: false
 
-  }
+  };
 
   columns = [{ prop: 'clienteId', }, { name: 'razaoSocial' },
   { prop: 'vendedorDto.vendedorId', name: 'Cod. Vendedor'}, { prop: 'vendedorDto.nome', name: 'Vendedor' }, { name: 'Distancia' }];
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
 
   ColumnMode = ColumnMode;
-
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -62,11 +59,11 @@ export class GerencialComponent implements OnInit {
     });
   }
 
-
   distribuir() {
     this.clienteService.getGerencial().subscribe(data =>{
       console.log(data);
-    })
+      this.carregarTudo();
+    });
 
   }
 

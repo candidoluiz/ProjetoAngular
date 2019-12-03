@@ -31,11 +31,7 @@ export class ClienteFormComponent implements OnInit {
   formulario: FormGroup;
   teste: any;
 
-
-
-
   ngOnInit() {
-
 
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
@@ -55,14 +51,13 @@ export class ClienteFormComponent implements OnInit {
 
       });
 
-
   }
 
   ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
 
-  verificaValidTouched(campo){
+  verificaValidTouched(campo) {
 
     return !this.formulario.get(campo).valid && this.formulario.get(campo).touched;
   }
@@ -71,12 +66,15 @@ export class ClienteFormComponent implements OnInit {
     return{
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
-    }
+    };
   }
-
 
   salvar() {
       this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
+
+
+
+
         this.router.navigate(['/cliente']);
       });
   }
@@ -97,7 +95,6 @@ export class ClienteFormComponent implements OnInit {
     });
   }
 
-
   carregarFormulario(cliente: ClienteDto) {
     this.formulario = this.formBuider.group({
       clienteId: [cliente.clienteId],
@@ -114,12 +111,11 @@ export class ClienteFormComponent implements OnInit {
   }
 
   verificaValidacoesForm(formGroup: FormGroup){
-    Object.keys(formGroup.controls).forEach(campo =>{
+    Object.keys(formGroup.controls).forEach(campo => {
       const controle = formGroup.get(campo);
       controle.markAsDirty();
-      if (controle instanceof FormGroup)
-      {
-        this.verificaValidacoesForm(controle)
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
       }
     });
 
