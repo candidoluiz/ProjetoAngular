@@ -16,6 +16,8 @@ import { LoginModule } from './login/login.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { GerencialModule } from './gerencial/gerencial.module';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { GerencialModule } from './gerencial/gerencial.module';
     BrowserModule,
     NgxDatatableModule,
     GerencialModule,
+    SharedModule
 
 
   ],

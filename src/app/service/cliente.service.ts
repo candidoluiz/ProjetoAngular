@@ -38,8 +38,8 @@ export class ClienteService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
-      alert('erro');
+      console.error(error.error);
+      alert(error.error.message);
       return of(result as T);
     };
   }
@@ -48,7 +48,6 @@ export class ClienteService {
 
     const url = `${apiUrl}/${id}`;
     return this.http.get<ClienteDto>(url).pipe(
-      //tap(_ => console.log(`leu o cliente id=${id}`)),
       catchError(this.handleError<ClienteDto>(`getCliente id=${id}`))
     );
   }

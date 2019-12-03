@@ -42,11 +42,10 @@ export class ClienteFormComponent implements OnInit {
 
         this.formulario = this.formBuider.group({
           clienteId: [null],
-          nome: [null],
           cnpj: [null, Validators.required],
-          razaoSocial: [null],
-          lat: [null],
-          longi: [null]
+          razaoSocial: [null, Validators.required],
+          lat: [null, Validators.required],
+          longi: [null, Validators.required]
           });
 
       });
@@ -57,12 +56,12 @@ export class ClienteFormComponent implements OnInit {
     this.inscricao.unsubscribe();
   }
 
-  verificaValidTouched(campo) {
+  verificaValidTouched(campo: string) {
 
-    return !this.formulario.get(campo).valid && this.formulario.get(campo).touched;
+    return (!this.formulario.get(campo).valid && (this.formulario.get(campo).touched || this.formulario.get(campo).dirty));
   }
 
-  aplicationCssErro(campo){
+  aplicationCssErro(campo: string) {
     return{
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
@@ -70,13 +69,14 @@ export class ClienteFormComponent implements OnInit {
   }
 
   salvar() {
+    if (this.formulario.valid) {
       this.clienteService.addCliente(this.formulario.value).subscribe((formulario) => {
-
-
-
-
         this.router.navigate(['/cliente']);
       });
+    } else {
+      console.log("fomulario invalido");
+      this.verificaValidacoesForm(this.formulario);
+    }
   }
 
   carregarCliente(id: number) {
@@ -85,7 +85,6 @@ export class ClienteFormComponent implements OnInit {
       console.log('a lista ', this.cliente);
       this.formulario = this.formBuider.group({
         clienteId: [this.cliente.clienteId],
-        nome: [this.cliente.nome],
         cnpj: [this.cliente.cnpj, Validators.required],
         razaoSocial: [this.cliente.razaoSocial],
         lat: [this.cliente.lat],
@@ -95,16 +94,15 @@ export class ClienteFormComponent implements OnInit {
     });
   }
 
-  carregarFormulario(cliente: ClienteDto) {
-    this.formulario = this.formBuider.group({
-      clienteId: [cliente.clienteId],
-      nome: [cliente.nome],
-      cnpj: [cliente.cnpj],
-      razaoSocial: [cliente.razaoSocial],
-      lat: [cliente.lat],
-      longi: [cliente.longi]
-      });
-   }
+  // carregarFormulario(cliente: ClienteDto) {
+  //   this.formulario = this.formBuider.group({
+  //     clienteId: [cliente.clienteId],
+  //     cnpj: [cliente.cnpj],
+  //     razaoSocial: [cliente.razaoSocial],
+  //     lat: [cliente.lat],
+  //     longi: [cliente.longi]
+  //     });
+  //  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

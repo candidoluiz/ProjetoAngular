@@ -6,21 +6,15 @@
 
         <input disabled type="text" class="form-control" id="formGroupExampleInputId" placeholder="" formControlName="clienteId" >
       </div>
-    <div class="form-group col-12">
-      <label for="formGroupExampleInput">Nome </label>
-      <input  type="text" class="form-control" id="formGroupExampleInput1" placeholder="nome" formControlName="nome" >
+    <div class="form-group col-12" [ngClass]="aplicationCssErro('razaoSocial')">
+      <label for="formGroupExampleInput">Razão Social </label>
+      <input  type="text" class="form-control" id="formGroupExampleInput1" placeholder="Razão Social" formControlName="razaoSocial" >
 
 
     </div>
     <div class="form-group col-2">
       <label for="formGroupExampleInput2">CNPJ</label>
       <input  class="form-control" id="formGroupExampleInput2" placeholder="" formControlName="cnpj" >
-    </div>
-    <div class="form-group col-12">
-
-      <label for="formGroupExampleInput2">Razão Social</label>
-      <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="" formControlName="razaoSocial" >
-
     </div>
   </div>
     <div class="row">
